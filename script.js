@@ -1,55 +1,42 @@
-// Animal Class
 class Animal {
-    constructor(species) {
-        this._species = species;
-    }
+  constructor(species) {
+    this._species = species;
+  }
 
-    // Getter for species
-    get species() {
-        return this._species;
-    }
+  // Getter for species
+  get species() {
+    return this._species;
+  }
 
-    // Method to make sound
-    makeSound() {
-        console.log(`The ${this.species} makes a sound`);
-    }
+  // Generic method for any animal sound
+  makeSound() {
+    console.log(`The ${this.species} makes a sound`);
+  }
 }
 
-
-// Cat Class (inherits Animal)
 class Cat extends Animal {
-    constructor(species) {
-        super(species);
-    }
+  constructor(species) {
+    // Pass the species up to the Animal constructor
+    super(species);
+  }
 
-    // Method for purring
-    purr() {
-        console.log("purr");
-    }
+  purr() {
+    console.log("purr");
+  }
 }
 
-
-// Dog Class (inherits Animal)
 class Dog extends Animal {
-    constructor(species) {
-        super(species);
-    }
+  constructor(species) {
+    // Pass the species up to the Animal constructor
+    super(species);
+  }
 
-    // Method for barking
-    bark() {
-        console.log("woof");
-    }
+  bark() {
+    console.log("woof");
+  }
 }
 
-
-// Example usage
-
-// Cat example
-const myCat = new Cat("Siamese");
-myCat.makeSound(); // The Siamese makes a sound
-myCat.purr();      // purr
-
-// Dog example
-const myDog = new Dog("Golden Retriever");
-myDog.makeSound(); // The Golden Retriever makes a sound
-myDog.bark();      // woof
+// Attach to window for Cypress tests to access
+window.Animal = Animal;
+window.Cat = Cat;
+window.Dog = Dog;
