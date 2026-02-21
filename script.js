@@ -1,3 +1,4 @@
+// Animal class
 class Animal {
   constructor(species) {
     this._species = species;
@@ -8,15 +9,15 @@ class Animal {
     return this._species;
   }
 
-  // Generic method for any animal sound
+  // Method to log sound message
   makeSound() {
-    console.log(`The ${this.species} makes a sound`);
+    console.log(`The ${this._species} makes a sound`);
   }
 }
 
+// Cat class inherits Animal
 class Cat extends Animal {
   constructor(species) {
-    // Pass the species up to the Animal constructor
     super(species);
   }
 
@@ -25,9 +26,9 @@ class Cat extends Animal {
   }
 }
 
+// Dog class inherits Animal
 class Dog extends Animal {
   constructor(species) {
-    // Pass the species up to the Animal constructor
     super(species);
   }
 
@@ -36,7 +37,20 @@ class Dog extends Animal {
   }
 }
 
-// Attach to window for Cypress tests to access
-window.Animal = Animal;
-window.Cat = Cat;
-window.Dog = Dog;
+
+// Function to test in browser
+function runTest() {
+  // Create Cat
+  const myCat = new Cat("Siamese");
+  myCat.makeSound();
+  myCat.purr();
+
+  // Create Dog
+  const myDog = new Dog("Golden Retriever");
+  myDog.makeSound();
+  myDog.bark();
+
+  // Test getter
+  console.log("Cat species:", myCat.species);
+  console.log("Dog species:", myDog.species);
+}
